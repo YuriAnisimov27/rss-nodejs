@@ -1,4 +1,4 @@
-const alphabet = require('./alphabet.json');
+const alphabet = require('../data/alphabet.json');
 
 /**
  * Function encode a text by Caesar cipher
@@ -12,7 +12,8 @@ function encode(str, shift) {
     const uppChar = char.toUpperCase();
     if (alphabet.includes(uppChar)) {
       const idx = alphabet.findIndex(el => el === uppChar);
-      const ciphered = alphabet[(idx + shift + alphabet.length) % alphabet.length];
+      const ciphered =
+        alphabet[(idx + shift + alphabet.length) % alphabet.length];
       const cipheredChar = uppChar === char ? ciphered : ciphered.toLowerCase();
       res += cipheredChar;
     } else {

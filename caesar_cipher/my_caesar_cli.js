@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const { program } = require('commander');
-const encode = require('./encode');
-const decode = require('./decode');
-const alphabet = require('./alphabet.json');
+const encode = require('./utils/encode');
+const decode = require('./utils/decode');
+const alphabet = require('./data/alphabet.json');
 
 program.version('1.0.0', '-v, --version', 'output the current version');
 

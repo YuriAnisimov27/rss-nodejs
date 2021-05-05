@@ -1,4 +1,4 @@
-const alphabet = require('./alphabet.json');
+const alphabet = require('../data/alphabet.json');
 
 /**
  * Function decode a text by Caesar cipher
