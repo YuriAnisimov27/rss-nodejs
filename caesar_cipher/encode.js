@@ -4,7 +4,7 @@ const alphabet = require('./alphabet.json');
  * Function encode a text by Caesar cipher
  * @param {String} str initial text
  * @param {Number} shift parameter indicates how many elements to shift
- * @returns {String} returns encoded text
+ * @returns {String} returns decoded text
  */
 function encode(str, shift) {
   let res = '';
@@ -12,8 +12,7 @@ function encode(str, shift) {
     const uppChar = char.toUpperCase();
     if (alphabet.includes(uppChar)) {
       const idx = alphabet.findIndex(el => el === uppChar);
-      const ciphered =
-        alphabet[(alphabet.length + idx - shift) % alphabet.length];
+      const ciphered = alphabet[(idx + shift + alphabet.length) % alphabet.length];
       const cipheredChar = uppChar === char ? ciphered : ciphered.toLowerCase();
       res += cipheredChar;
     } else {
