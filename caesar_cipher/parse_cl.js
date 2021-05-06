@@ -1,10 +1,15 @@
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 const { program } = require('commander');
 const encode = require('./utils/encode');
 const decode = require('./utils/decode');
 const alphabet = require('./data/alphabet.json');
+const handleError = require('./handleError');
 
+/**
+ * Function parsing command line for required datas
+ * @returns {Object} with keys method, shift, input, output
+ */
 function parseCommandLine() {
   program.version('1.0.0', '-v, --version', 'output the current version');
   program
@@ -18,6 +23,8 @@ function parseCommandLine() {
   program.parse(process.argv);
 
   const options = program.opts();
+
+  handleError(options.action, +options.shift, options.input);
 
   let input, output;
 
