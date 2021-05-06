@@ -6,30 +6,34 @@ const decode = require('./utils/decode');
 const alphabet = require('./data/alphabet.json');
 
 program.version('1.0.0', '-v, --version', 'output the current version');
-
 program
   .requiredOption('-s, --shift <type>', 'The shift is required')
   .option('-i, --input <type>', 'input file')
   .option('-o, --output <type>', 'output file')
   .requiredOption('-a, --action <type>', 'Action (encode/decode) is required');
-
 program.parse(process.argv);
 
 const options = program.opts();
-if (options.shift) console.log(`- shift: ${options.shift}`);
-if (options.input) console.log(`- input file: ${options.input}`);
-if (options.output) console.log(`- output file: ${options.output}`);
-if (options.action) console.log(`- action: ${options.action}`);
 
-const pathToInputFile = path.join(__dirname, options.input);
-const pathToOutputFile = path.join(__dirname, options.output);
+let input, output;
 
-const readable = fs.createReadStream(pathToInputFile);
-const writeable = fs.createWriteStream(pathToOutputFile);
+if (options.input) {
+  const pathToInputFile = path.join(__dirname, options.input);
+  input = fs.createReadStream(pathToInputFile);
+} else {
+  input = process.stdin;
+}
+
+if (options.output) {
+  const pathToOutputFile = path.join(__dirname, options.output);
+  output = fs.createWriteStream(pathToOutputFile, { flags: 'a' });
+} else {
+  output = process.stdout;
+}
 
 const method = options.action === 'encode' ? encode : decode;
+const shift = Number(options.shift) % alphabet.length;
 
-readable.on('data', function (chunk) {
-  const shift = Number(options.shift) % alphabet.length;
-  writeable.write(method(chunk.toString(), shift));
+input.on('data', function (chunk) {
+  output.write(method(chunk.toString(), shift));
 });
