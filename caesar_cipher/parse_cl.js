@@ -11,15 +11,16 @@ const handleError = require('./handleError');
  * @returns {Object} with keys method, shift, input, output
  */
 function parseCommandLine() {
+  // const helpText = 'help';
   program.version('1.0.0', '-v, --version', 'output the current version');
   program
-    .requiredOption('-s, --shift <type>', 'The shift is required')
-    .option('-i, --input <type>', 'input file')
-    .option('-o, --output <type>', 'output file')
+    .requiredOption('-s, --shift <integer number>', 'shift (is required)')
     .requiredOption(
-      '-a, --action <type>',
-      'Action (encode/decode) is required'
-    );
+      '-a, --action <encode/decode>',
+      'action: encode/decode (is required)'
+    )
+    .option('-i, --input <path to input file>', 'input file')
+    .option('-o, --output <path to output file>', 'output file');
   program.parse(process.argv);
 
   const options = program.opts();
