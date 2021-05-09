@@ -11,7 +11,6 @@ const handleError = require('./handleError');
  * @returns {Object} with keys method, shift, input, output
  */
 function parseCommandLine() {
-  // const helpText = 'help';
   program.version('1.0.0', '-v, --version', 'output the current version');
   program
     .requiredOption('-s, --shift <integer number>', 'shift (is required)')
@@ -24,11 +23,9 @@ function parseCommandLine() {
   program.parse(process.argv);
 
   const options = program.opts();
-
   handleError(options.action, +options.shift, options.input);
 
   let input, output;
-
   if (options.input) {
     const pathToInputFile = path.join(__dirname, options.input);
     input = fs.createReadStream(pathToInputFile);
