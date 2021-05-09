@@ -10,7 +10,7 @@
 
 ## Description
 
-**Implement CLI tool that will encode and decode a text by [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher)**.
+**CLI tool that will encode and decode a text by [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher)**.
 
 ## How to use
 
@@ -38,13 +38,13 @@ Then you run my_caesar_cli with the following flags:
 
 -a or --action - an action to perform, either decode or encode. Throws an error otherwise.
 
--s or --shift - a shift by how many numbers to shift the alphabet, positive integers from 1. Throws an error if the flag is omitted.
+-s or --shift - a shift by how many numbers to shift the alphabet, integers. Throws an error if the flag is omitted.
 
 ***optional:***
 
--i or --input - a text-file to read an input from. It's better be an existing text-file or an error is thrown. If the flag is omitted, the input is read from the console.
+-i or --input - a text-file to read an input from. If the file is not found, an error is generated. If the flag is omitted, the input is read from the console. To stop the application use ctrl + c or control + c in MacOs. 
 
--o or --output - a text-file to write an output to. It's better be an existing text-file or an error is thrown. If the flag is omitted, the output is written to the console.
+-o or --output - a text-file to write an output to. If the flag is specified and the file is not found, it will be created automatically at the specified path.  If the flag is omitted, the output is written to the console.
 
 
 You can also:
