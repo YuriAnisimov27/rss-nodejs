@@ -1,65 +1,65 @@
 # Caesar cipher CLI tool
 
-### Useful links
+### Полезные ссылки
 
-[Task description](https://github.com/rolling-scopes-school/basic-nodejs-2021Q2/blob/master/descriptions/caesar-cipher-cli-tool.md)
+[Описание задания](https://github.com/rolling-scopes-school/basic-nodejs-2021Q2/blob/master/descriptions/caesar-cipher-cli-tool.md)
 
-[Cross-check criteria](https://github.com/rolling-scopes-school/basic-nodejs-2021Q2/blob/master/cross-check/caesar-cipher-cli-tool.md)
+[Критерии проверки](https://github.com/rolling-scopes-school/basic-nodejs-2021Q2/blob/master/cross-check/caesar-cipher-cli-tool.md)
 
 [Check-list](https://competent-hamilton-095abb.netlify.app/)
 
-## Description
+## Описание
 
-**Implement CLI tool that will encode and decode a text by [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher)**.
+**Инструмент CLI, который будет кодировать и декодировать текст с помощью [Шифр цезаря](https://en.wikipedia.org/wiki/Caesar_cipher)**.
 
-## How to use
+## Как использовать
 
-### Installation
+### Установка
 
-Clone (or download) this repo:
+Клонируйте (или загрузите) это репозиторий:
 
 `git clone https://github.com/YuriAnisimov27/rss-nodejs.git -b caesar_cipher `
 
-Install dependencies:
+Установите зависимости:
 
 `cd rss-nodejs/caesar_cipher/ && npm i`
 
-To run tests
+Для запуска тестов:
 
 `npm run test`
 
 <hr/>
 
-### Usage
+### Применение
 
-Then you run my_caesar_cli with the following flags:
+Затем вы запускаете my_caesar_cli со следующими флагами:
 
-***required:***
+***обязательные:***
 
--a or --action - an action to perform, either decode or encode. Throws an error otherwise.
+-a или --action - действие, которое нужно выполнить, либо декодировать, либо кодировать. В противном случае выдает ошибку. (encode/decode)
 
--s or --shift - a shift by how many numbers to shift the alphabet, positive integers from 1. Throws an error if the flag is omitted.
+-s или --shift - сдвиг. Количество чисел, на которое нужно сдвинуть алфавит, Допустимы любые целые числа. Выдает ошибку, если флаг опущен.
 
-***optional:***
+***опциональные:***
 
--i or --input - a text-file to read an input from. It's better be an existing text-file or an error is thrown. If the flag is omitted, the input is read from the console.
+-i или --input - текстовый файл для чтения ввода. Если файл не найден выдается ошибка. Если флаг опущен, ввод считывается с консоли. Чтобы остановить ввод используйте комбинацию ctrl + c или control + c на macOs.
 
--o or --output - a text-file to write an output to. It's better be an existing text-file or an error is thrown. If the flag is omitted, the output is written to the console.
+-o или --output - текстовый файл для записи вывода. Если флаг указан, а файл не найден, он будет создан автоматически по указанному пути. Если флаг опущен, вывод записывается в консоль.
 
-You can also:
+Вы также можете:
 
-`npm run help` to see how to use this CLI
+`npm run help` чтобы узнать, как использовать этот интерфейс командной строки
 
-`npm run test` to run tests
+`npm run test` запустить тесты
 
 <hr/>
 
-How it works:
+Как это работает:
 
-App decode/encode data from source. If source or target file is not specified the data is read / output to the command line
+Приложение декодирует / кодирует данные из источника. Если исходный или целевой файл не указан, данные читаются / выводятся в командную строку.
 
 <details>
-		  <summary>Examples:</summary>
+		  <summary>Примеры:</summary>
 		  <p>
 
 ```
@@ -85,4 +85,4 @@ node my_caesar_cli --action encode --shift -1 --input plain.txt --output encoded
 </p>
 		</details>
 
-in addition, the creation of the output file will occur if it does not exists
+кроме того, будет создан выходной файл, если он указан, но не существует или не найден
